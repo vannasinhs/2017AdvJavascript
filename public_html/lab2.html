@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>random number generator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <!--  //Text Box and submit (generate) button -->
+        <div id="wrapper" class="red"></div>
+        <input type="text" id="num" value ="num"/>
+        <input type ="button" id= "generateTable" value = "Generate Grid"/>
+        <table>
+        <td id="myTd" class="color"></td>
+            
+            
+        </table>
+
+
+
+        <script type ="text/javascript">
+
+            var wrapper = document.getElementsByClassName("red")[0];
+            var myButton = document.getElementById("generateTable");
+            var myText = document.getElementById("num");
+            var tdd = document.getElementsByClassName("color");
+
+
+            var table = [];
+
+
+            //
+     function randomNumber(min, max)
+            {
+
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+
+            }           
+
+            myButton.onclick = generate;
+            function generate()
+            {
+            
+                var num =  parseInt(myText.value);
+
+                var str = "<table>";
+
+                for (var i = 0; i < num; i++)
+                {
+                    
+                  
+                    str += "<tr>"
+                    table.push([])
+                    for (var j = 0; j < num; j++)
+                    {
+                       var randNum = randomNumber(1, 99);
+                        
+                        table[i][j] = randNum;//generate a random number
+                         if (randNum % 3 == 0)
+                         {
+                        str += "<td style=background-color:red;>";
+                    }
+                    
+                    else if (randNum % 2 == 0)
+                    {
+                    str += "<td style=background-color:blue;>";                        
+                    }
+                        str += randNum//use the random number
+                        str += "</td>";
+                        
+                                            
+
+
+                    /*  if (randNum % 3 == 0) //use this one */
+                      
+                        
+                        
+                    }
+                    str += "</tr>";
+                }
+                str += "</table>";
+
+                wrapper.innerHTML = str;
+            }
+            console.log(table);
+            
+            
+
+
+        </script>
+    </body>
+</html>
